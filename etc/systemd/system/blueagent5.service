@@ -1,0 +1,10 @@
+[Unit]
+Description=BlueAgent5 service
+After=bluetooth.service
+Requires=bluetooth.service
+ 
+[Service]
+ExecStart=/usr/local/sbin/blueagent5.py --pin 4321
+ 
+[Install]
+WantedBy=multi-user.target

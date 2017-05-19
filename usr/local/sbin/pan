@@ -1,0 +1,8 @@
+#!/bin/sh
+# Ugly hack to work around #7878480
+iptable -F
+iptable -t nat -F
+iptables -t mangle -F
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+exec /usr/local/sbin/bt-pan.py --systemd --debug server pan

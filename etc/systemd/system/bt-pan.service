@@ -1,0 +1,14 @@
+[Unit]
+Description=Bluetooth Personal Area Network
+After=systemd-networkd.service network-online.target bluetooth.service
+Requires=systemd-networkd.service
+Wants=network-online.target
+PartOf=bluetooth.service
+ 
+[Service]
+Type=notify
+ExecStart=/usr/local/sbin/bt-pan.py --systemd --debug server pan0
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
